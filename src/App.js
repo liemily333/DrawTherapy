@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Counter from "./pages/counter";
 import Teams from "./pages/teams";
+import "./App.css";
 
 function App(props) {
   // const [teams, setTeams] = useState(0);
@@ -9,8 +10,13 @@ function App(props) {
   console.log(props);
   return (
     <div>
-      <Teams></Teams>
-      <Counter></Counter>
+      <div className="Header">
+        <p> start play!</p>
+      </div>
+      <div className="main">
+        <Teams></Teams>
+        <Counter></Counter>
+      </div>
     </div>
   );
 }
