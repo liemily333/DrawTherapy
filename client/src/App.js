@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Counter from "./pages/counter";
 import Teams from "./pages/teams";
 import Register from "./pages/register";
+// import Profile from "./pages/profile";
 import "./App.css";
 
 function App(props) {
