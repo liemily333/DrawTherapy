@@ -4,6 +4,8 @@ import Teams from "./pages/teams";
 import Register from "./pages/register";
 // import Profile from "./pages/profile";
 import "./App.css";
+import UserProfile from "./pages/profile";
+import NavBar from "./components/navBar/navBar";
 
 function App(props) {
   // const [teams, setTeams] = useState(0);
@@ -16,6 +18,7 @@ function App(props) {
       <div className="main">
         <Teams></Teams>
         <Counter></Counter>
+        <UserProfile></UserProfile>
       </div>
     </div>
   );

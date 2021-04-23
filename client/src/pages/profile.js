@@ -1,10 +1,10 @@
 import React from "react";
-import navBar from "../components/navBar/navBar";
+import NavBar from "../components/navBar/navBar";
 
 function userProfile() {
   return (
     <div>
-      <navBar></navBar>
+      <NavBar></NavBar>
     </div>
   );
 }
