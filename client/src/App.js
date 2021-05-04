@@ -11,8 +11,7 @@ import Login from "./pages/login";
 import Welcome from "./pages/welcome";
 import { createBrowserHistory as history } from "history";
 function App(props) {
-  // const [teams, setTeams] = useState(0);
-  // const [teamName, setTeamName] = useState(0);
+  const [gameScore, setGameScore] = useState(0);
 
   console.log(props);
   return (
