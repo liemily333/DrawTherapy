@@ -5,6 +5,7 @@ function userProfile() {
   return (
     <div>
       <NavBar></NavBar>
+      <h1> HI! </h1>
     </div>
   );
 }

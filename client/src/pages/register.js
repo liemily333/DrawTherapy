@@ -8,7 +8,7 @@ function Register() {
 
   //when the button is clicked, it sends the register information to the back end.
   const register = () => {
-    Axios.post("http://localhost3000/register", {
+    Axios.post("http://localhost:3000/register", {
       username: username,
       password: password,
     }).then((response) => {

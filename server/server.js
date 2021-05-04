@@ -4,8 +4,9 @@ const cors = require("cors");
 
 const app = express();
 //cross platform sending info from front end to backend
-app.use(cors());
+
 app.use(express.json());
+app.use(cors());
 
 //connecting to mysql database
 const db = mysql.createConnection({
@@ -35,5 +36,26 @@ app.post("/register", (req, res) => {
     "INSERT INTO user (username, password) VALUES (?,?)",
     [username, password],
     (err, result) => console.log(err)
+  );
+});
+
+app.post("/login", (req, res) => {
+  const username = req.body.usernameLogin;
+  const password = req.body.passwordLogin;
+
+  db.query(
+    "SELECT * FROM users WHERE username= ? AND password = ?",
+    [usernameLogin, passwordLogin],
+    (err, result) => {
+      if (err) {
+        res.send({ err: err });
+      } else {
+        if (result) {
+          res.send(result);
+        } else {
+          res.send({ message: "wrong username and password" });
+        }
+      }
+    }
   );
 });
