@@ -1,10 +1,23 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import { useHistory } from "react-router-dom";
+import counter from "./counter";
 
 function Register() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   console.log(username);
+
+  const history = useHistory();
+
+  function handleClick() {
+    history.push("/counter");
+    register();
+  }
+
+  const switchPage = () => {
+    history.push("/counter");
+  };
 
   //when the button is clicked, it sends the register information to the back end.
   const register = () => {
@@ -33,7 +46,7 @@ function Register() {
           setPassword(e.target.value);
         }}
       />
-      <button onClick={register}>Register</button>
+      <button onClick={handleClick}>Register</button>
     </div>
   );
 }
