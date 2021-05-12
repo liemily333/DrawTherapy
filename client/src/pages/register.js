@@ -11,8 +11,12 @@ function Register() {
   const history = useHistory();
 
   function handleClick() {
-    history.push("/counter");
+    history.push("/login");
     register();
+  }
+
+  function login() {
+    history.push("/login");
   }
 
   //when the button is clicked, it sends the register information to the back end.
@@ -43,6 +47,7 @@ function Register() {
         }}
       />
       <button onClick={handleClick}>Register</button>
+      <button onClick={login}>Log In</button>
     </div>
   );
 }

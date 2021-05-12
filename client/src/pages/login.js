@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Login() {
   const [usernameLogin, setUserNameLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
 
+  const history = useHistory();
   const login = () => {
     Axios.post("http://localhost:3002/login", {
       username: usernameLogin,
@@ -15,9 +17,18 @@ function Login() {
     });
   };
 
+  function registerPage() {
+    history.push("/register");
+  }
+
+  function loginSuccess() {
+    login();
+    history.push("/counter");
+  }
+
   return (
     <div>
-      <div className="register">
+      <div className="login">
         <h1> Login</h1>
         <label>userName</label>
         <input
@@ -33,7 +44,8 @@ function Login() {
             setPasswordLogin(e.target.value);
           }}
         />
-        <button onClick={login}> Login</button>
+        <button onClick={loginSuccess}> Login</button>
+        <button onClick={registerPage}> Sign Up</button>
       </div>
     </div>
   );
