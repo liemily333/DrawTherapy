@@ -7,11 +7,11 @@ function Login() {
   const [passwordLogin, setPasswordLogin] = useState("");
 
   const login = () => {
-    Axios.post("http://localhost:3000/login", {
+    Axios.post("http://localhost:3002/login", {
       username: usernameLogin,
       password: passwordLogin,
     }).then((response) => {
-      console.log("success" + response);
+      console.log(response);
     });
   };
 

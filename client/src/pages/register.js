@@ -15,10 +15,6 @@ function Register() {
     register();
   }
 
-  const switchPage = () => {
-    history.push("/counter");
-  };
-
   //when the button is clicked, it sends the register information to the back end.
   const register = () => {
     Axios.post("http://localhost:3000/register", {

@@ -23,8 +23,8 @@ db.connect(function (err) {
   console.log("connected to mysql server");
 });
 
-app.listen(3000, () => {
-  console.log("server running on 3000");
+app.listen(3002, () => {
+  console.log("server running");
 });
 
 //post request for register information to be posted onto database
@@ -40,21 +40,22 @@ app.post("/register", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  const username = req.body.usernameLogin;
-  const password = req.body.passwordLogin;
+  const username = req.body.username;
+  const password = req.body.password;
 
   db.query(
-    "SELECT * FROM users WHERE username= ? AND password = ?",
-    [usernameLogin, passwordLogin],
+    "SELECT * FROM user WHERE username = ? AND password = ?",
+    [username, password],
+
     (err, result) => {
       if (err) {
         res.send({ err: err });
+      }
+
+      if (result.length > 0) {
+        res.send(result);
       } else {
-        if (result) {
-          res.send(result);
-        } else {
-          res.send({ message: "wrong username and password" });
-        }
+        res.send({ message: "wrong username and password" });
       }
     }
   );
