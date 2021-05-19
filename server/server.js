@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const mysql = require("mysql");
 const cors = require("cors");
 
@@ -7,6 +8,8 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //connecting to mysql database
 const db = mysql.createConnection({
@@ -27,6 +30,9 @@ app.listen(3002, () => {
   console.log("server running");
 });
 
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to scoreTracker" });
+});
 //post request for register information to be posted onto database
 app.post("/register", (req, res) => {
   const username = req.body.username;
@@ -71,5 +77,16 @@ app.post("/gameInformation", (req, res) => {
     "INSERT INTO game (name1,name2,score1,score2) VALUES (?,?,?,?)",
     [name1, name2, score1, score2],
     (err, result) => console.log(err)
+  );
+});
+
+app.get("/games", (req, res) => {
+  db.query(
+    "SELECT * FROM game",
+
+    (err, result) => {
+      if (err) throw err;
+      console.log(result);
+    }
   );
 });

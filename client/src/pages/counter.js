@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import savebutton from "../components/saveButton/save";
+import Navigation from "../components/navBar/navBar";
 import "./style.css";
 import Axios from "axios";
 
@@ -23,7 +23,7 @@ function Counter(props) {
   console.log(score2);
 
   const saveGame = () => {
-    Axios.post("http://localhost:3000/gameInformation", {
+    Axios.post("http://localhost:3002/gameInformation", {
       name1: name1,
       name2: name2,
       score1: score1,
@@ -35,6 +35,7 @@ function Counter(props) {
 
   return (
     <div>
+      <Navigation></Navigation>
       <div className="header">
         <h1> "Be Fair, Play Hard" </h1>
       </div>
