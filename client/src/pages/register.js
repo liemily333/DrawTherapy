@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
-import counter from "./counter";
 
 function Register() {
   const [username, setUserName] = useState("");
@@ -21,7 +20,7 @@ function Register() {
 
   //when the button is clicked, it sends the register information to the back end.
   const register = () => {
-    Axios.post("http://localhost:3000/register", {
+    Axios.post("http://localhost:3002/register", {
       username: username,
       password: password,
     }).then((response) => {
