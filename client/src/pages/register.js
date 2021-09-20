@@ -12,6 +12,7 @@ function Register() {
   function handleClick() {
     history.push("/login");
     register();
+    alert("Your account has been created. Please log in");
   }
 
   function login() {

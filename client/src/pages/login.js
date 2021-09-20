@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 function Login() {
@@ -21,11 +20,6 @@ function Login() {
     history.push("/register");
   }
 
-  function loginSuccess() {
-    login();
-    history.push("/counter");
-  }
-
   return (
     <div>
       <div className="login">
@@ -44,7 +38,7 @@ function Login() {
             setPasswordLogin(e.target.value);
           }}
         />
-        <button onClick={loginSuccess}> Login</button>
+        <button onClick={login}> Login</button>
         <button onClick={registerPage}> Sign Up</button>
       </div>
     </div>

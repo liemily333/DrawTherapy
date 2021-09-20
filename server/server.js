@@ -16,7 +16,7 @@ const db = mysql.createConnection({
   user: "root",
   host: "localhost",
   password: "Minkyoung!1017",
-  database: "scoreTracker",
+  database: "drawUsers",
 });
 
 db.connect(function (err) {
@@ -39,7 +39,7 @@ app.post("/register", (req, res) => {
   const password = req.body.password;
 
   db.query(
-    "INSERT INTO user (username, password) VALUES (?,?)",
+    "INSERT INTO users (username, password) VALUES (?,?)",
     [username, password],
     (err, result) => console.log(err)
   );
@@ -50,7 +50,7 @@ app.post("/login", (req, res) => {
   const password = req.body.password;
 
   db.query(
-    "SELECT * FROM user WHERE username = ? AND password = ?",
+    "SELECT * FROM users WHERE username = ? AND password = ?",
     [username, password],
 
     (err, result) => {
@@ -65,4 +65,14 @@ app.post("/login", (req, res) => {
       }
     }
   );
+});
+
+app.get("/allUsers", (req, res) => {
+  db.query("SELECT * FROM users", (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
 });

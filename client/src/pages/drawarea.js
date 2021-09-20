@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import CanvasDraw from "react-canvas-draw";
 import rough from "roughjs";
 import "./style.css";
@@ -10,10 +10,14 @@ function DrawArea() {
   const savecanvas = useRef(null);
   const savedcanvas = useRef(null);
 
+  useEffect(() => {
+    console.log("+++++++++++++++++++++++++++++render");
+  }, [color, radius]);
+
   const saveDrawing = () => {
     console.log("click");
     const data = savecanvas.current.getSaveData();
-    console.log("this is your drawing", data);
+    console.log(data);
   };
 
   const SavedDrawing = () => {
