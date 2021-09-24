@@ -2,22 +2,30 @@ import React, { useState, useRef, useEffect } from "react";
 import CanvasDraw from "react-canvas-draw";
 import rough from "roughjs";
 import "./style.css";
+import Axios from "axios";
 
 function DrawArea() {
   const [radius, setRadius] = useState(null);
   const [color, setColor] = useState(null);
-
+  const [savedDrawing, setSavedDrawing] = useState(null);
   const savecanvas = useRef(null);
   const savedcanvas = useRef(null);
 
-  useEffect(() => {
-    console.log("+++++++++++++++++++++++++++++render");
-  }, [color, radius]);
+  console.log("SAVED DRAWING", savedDrawing);
 
   const saveDrawing = () => {
-    console.log("click");
     const data = savecanvas.current.getSaveData();
     console.log(data);
+    setSavedDrawing(data);
+    saveToDB();
+  };
+
+  const saveToDB = () => {
+    Axios.post("http://localhost:3005/allDrawings", {
+      savedDrawing: savedDrawing,
+    }).then((response) => {
+      console.log(response);
+    });
   };
 
   const SavedDrawing = () => {

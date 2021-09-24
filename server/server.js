@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
 const cors = require("cors");
+const passport = require("passport");
 
 const app = express();
 //cross platform sending info from front end to backend
@@ -10,6 +11,8 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 //connecting to mysql database
 const db = mysql.createConnection({
@@ -26,7 +29,7 @@ db.connect(function (err) {
   console.log("connected to mysql server");
 });
 
-app.listen(3002, () => {
+app.listen(3005, () => {
   console.log("server running");
 });
 
@@ -37,10 +40,24 @@ app.get("/", (req, res) => {
 app.post("/register", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
+  const email = req.body.email1;
+  const gender = req.body.gender1;
+  const dateOfBirth = req.body.dateOfBirth1;
 
   db.query(
-    "INSERT INTO users (username, password) VALUES (?,?)",
-    [username, password],
+    "INSERT INTO users (username, password, email, gender, DOB) VALUES (?,?,?,?,?)",
+    [username, password, email, gender, dateOfBirth],
+    (err, result) => console.log(err)
+  );
+});
+
+app.post("/allDrawings", (req, res) => {
+  const savedDrawing = req.body.savedDrawing;
+  console.log("SERVER DATA", savedDrawing);
+
+  db.query(
+    "INSERT INTO drawings (drawing) VALUES (?)",
+    [savedDrawing],
     (err, result) => console.log(err)
   );
 });
