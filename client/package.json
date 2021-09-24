@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
+    "ajv": "^6.8.1",
     "audio-react-recorder": "^1.0.4",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
@@ -50,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "ajv": "6.8.1"
   }
 }

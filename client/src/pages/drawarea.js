@@ -11,27 +11,23 @@ function DrawArea() {
   const savecanvas = useRef(null);
   const savedcanvas = useRef(null);
 
-  console.log("SAVED DRAWING", savedDrawing);
-
   const saveDrawing = () => {
     const data = savecanvas.current.getSaveData();
-    console.log(data);
     setSavedDrawing(data);
-    saveToDB();
   };
 
-  const saveToDB = () => {
+  const viewDrawing = () => {
+    const data = savecanvas.current.getSaveData();
+    savedcanvas.current.loadSaveData(data);
+  };
+
+  useEffect(() => {
     Axios.post("http://localhost:3005/allDrawings", {
       savedDrawing: savedDrawing,
     }).then((response) => {
       console.log(response);
     });
-  };
-
-  const SavedDrawing = () => {
-    const data = savecanvas.current.getSaveData();
-    savedcanvas.current.loadSaveData(data);
-  };
+  }, [savedDrawing]);
 
   const clearCanvas = () => {
     savecanvas.current.clear();
@@ -74,7 +70,7 @@ function DrawArea() {
         ref={savedcanvas}
         hideGrid="true"
       />
-      <button onClick={SavedDrawing}>view drawing</button>
+      <button onClick={viewDrawing}>view drawing</button>
     </div>
   );
 }
