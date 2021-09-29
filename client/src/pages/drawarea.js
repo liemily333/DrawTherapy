@@ -46,31 +46,34 @@ function DrawArea() {
   }
 
   return (
-    <div className="drawArea">
-      <h1> begin drawing!</h1>
-      <CanvasDraw
-        canvasWidth={window.innerWidth}
-        brushRadius={radius}
-        brushColor={color}
-        getSaveData
-        ref={savecanvas}
-        hideGrid="true"
-      />
-      <button onClick={changeRadius}>30</button>
-      <button onClick={changeColor}>pink</button>
-      <button onClick={clearCanvas}> clear canvas</button>
-      <button onClick={saveDrawing}> save drawing</button>
-      <button onClick={undoCanvas}>undo last move</button>
-
-      <CanvasDraw
-        canvasWidth={window.innerWidth}
-        brushRadius={radius}
-        brushColor={color}
-        getSaveData
-        ref={savedcanvas}
-        hideGrid="true"
-      />
-      <button onClick={viewDrawing}>view drawing</button>
+    <div className="draw">
+      <div className="drawArea">
+        <h1> begin drawing!</h1>
+        <CanvasDraw
+          canvasWidth="1000px"
+          brushRadius={radius}
+          brushColor={color}
+          getSaveData
+          ref={savecanvas}
+          hideGrid="true"
+        />
+        <button onClick={changeRadius}>30</button>
+        <button onClick={changeColor}>pink</button>
+        <button onClick={clearCanvas}> clear canvas</button>
+        <button onClick={saveDrawing}> save drawing</button>
+        <button onClick={undoCanvas}>undo last move</button>
+      </div>
+      <div className="viewDrawing">
+        <CanvasDraw
+          canvasWidth="1000px"
+          brushRadius={radius}
+          brushColor={color}
+          getSaveData
+          ref={savedcanvas}
+          hideGrid="true"
+        />
+        <button onClick={viewDrawing}>view drawing</button>
+      </div>
     </div>
   );
 }

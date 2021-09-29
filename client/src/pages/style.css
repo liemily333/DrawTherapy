@@ -12,3 +12,58 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.login {
+  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+  padding: 100px;
+  font-family: "Permanent Marker", cursive;
+  padding-left: 500px;
+}
+
+.loginContent {
+  width: 400px;
+  justify-content: center;
+  align-content: center;
+  background: white;
+  height: 500px;
+  padding-top: 100px;
+  padding-left: 100px;
+}
+
+.loginButtons {
+  margin-top: 30px;
+  float: left;
+}
+
+.registerButtons {
+  margin-top: 30px;
+  float: left;
+  width: 200px;
+}
+.register {
+  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+  padding: 100px;
+  font-family: "Permanent Marker", cursive;
+  padding-left: 500px;
+}
+
+.registerContent {
+  width: 400px;
+  justify-content: center;
+  align-content: center;
+  background: white;
+  height: 500px;
+  padding-top: 80px;
+  padding-left: 70px;
+}
+
+.draw {
+  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+  padding: 100px;
+  font-family: "Permanent Marker", cursive;
+}
+
+.drawArea {
+  width: 1000px;
+  background: yellow;
+}

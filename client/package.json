@@ -26,7 +26,8 @@
     "react-scripts": "4.0.3",
     "react-voice-recorder": "^2.1.0",
     "roughjs": "^4.4.1",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^1.1.1",
+    "webfontloader": "^1.6.28"
   },
   "scripts": {
     "start": "react-scripts start",

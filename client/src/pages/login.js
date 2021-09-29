@@ -21,25 +21,30 @@ function Login() {
   }
 
   return (
-    <div>
-      <div className="login">
-        <h1> Login</h1>
-        <label>userName</label>
+    <div className="login">
+      <div className="loginContent">
+        <h1 className="font-loader"> Login</h1>
+        <br></br>
         <input
           type="text"
+          placeholder="username"
           onChange={(e) => {
             setUserNameLogin(e.target.value);
           }}
         />
-        <label>password</label>
+        <br></br>
         <input
           type="text"
+          placeholder="password"
           onChange={(e) => {
             setPasswordLogin(e.target.value);
           }}
         />
-        <button onClick={login}> Login</button>
-        <button onClick={registerPage}> Sign Up</button>
+        <br></br>
+        <div className="loginButtons">
+          <button onClick={login}> Login</button>
+          <button onClick={registerPage}> Register </button>
+        </div>
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import Axios from "axios";
 import { useHistory } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-
 import Select from "@mui/material/Select";
 import Box from "@mui/material/Box";
 
@@ -42,49 +41,57 @@ function Register() {
 
   return (
     <div className="register">
-      <h1> Register</h1>
-      <label>userName</label>
-      <input
-        type="text"
-        onChange={(e) => {
-          setUserName(e.target.value);
-        }}
-      />
-      <label> password</label>
-      <input
-        type="text"
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-      />
-      <Box>
-        <InputLabel> Gender </InputLabel>
-        <Select
-          value={gender}
+      <div className="registerContent">
+        <h1> Register</h1>
+        <br></br>
+        <input
+          type="text"
+          placeholder="username"
           onChange={(e) => {
-            setGender(e.target.value);
+            setUserName(e.target.value);
           }}
-        >
-          <MenuItem value="female">female </MenuItem>
-          <MenuItem value="male"> male</MenuItem>
-        </Select>
-      </Box>
-      <lable> date of Birth</lable>
-      <input
-        type="date"
-        onChange={(e) => {
-          setDateOfBirth(e.target.value);
-        }}
-      />
-      <label> email address</label>
-      <input
-        type="text"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-      />{" "}
-      <button onClick={handleClick}>Register</button>
-      <button onClick={login}>Log In</button>
+        />
+        <br></br>
+        <input
+          type="text"
+          placeholder="password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+        <Box>
+          <label> Gender: </label>
+          <Select
+            value={gender}
+            onChange={(e) => {
+              setGender(e.target.value);
+            }}
+          >
+            <MenuItem value="female">female </MenuItem>
+            <MenuItem value="male"> male</MenuItem>
+          </Select>
+        </Box>
+        <lable> Date Of Birth: </lable>
+        <input
+          type="date"
+          onChange={(e) => {
+            setDateOfBirth(e.target.value);
+          }}
+        />
+        <br></br>
+        <input
+          type="text"
+          placeholder="email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />{" "}
+        <br></br>
+        <div className="registerButtons">
+          <button onClick={handleClick}>Register</button>
+          <button onClick={login}>Log In</button>
+        </div>
+      </div>
     </div>
   );
 }
