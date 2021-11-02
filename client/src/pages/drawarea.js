@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import CanvasDraw from "react-canvas-draw";
-import rough from "roughjs";
 import "./style.css";
 import Axios from "axios";
+import NavBar from "../componets/navBar";
 
 function DrawArea() {
   const [radius, setRadius] = useState(null);
@@ -17,8 +17,11 @@ function DrawArea() {
   };
 
   const viewDrawing = () => {
+    console.log("viewing drawing");
     const data = savecanvas.current.getSaveData();
     savedcanvas.current.loadSaveData(data);
+    console.log("savecanvas.current", savecanvas.current);
+    console.log("savecanvas current data", data);
   };
 
   useEffect(() => {
@@ -28,6 +31,7 @@ function DrawArea() {
       console.log(response);
     });
   }, [savedDrawing]);
+  console.log("saved drawings", savedDrawing);
 
   const clearCanvas = () => {
     savecanvas.current.clear();
@@ -47,6 +51,7 @@ function DrawArea() {
 
   return (
     <div className="draw">
+      <NavBar></NavBar>
       <div className="drawArea">
         <h1> begin drawing!</h1>
         <CanvasDraw
@@ -57,6 +62,7 @@ function DrawArea() {
           ref={savecanvas}
           hideGrid="true"
         />
+        <div class></div>
         <button onClick={changeRadius}>30</button>
         <button onClick={changeColor}>pink</button>
         <button onClick={clearCanvas}> clear canvas</button>
