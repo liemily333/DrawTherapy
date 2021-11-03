@@ -1,11 +1,11 @@
 import React from "react";
-import NavBar from "../componets/navBar";
+import NavBar from "../components/navBar";
 
 function About() {
   return (
     <div>
       <NavBar></NavBar>
-      <div className="howArt">
+      <div className="draw">
         <h1> Why did I choose to create this application?</h1>
         <ul>
           <li>
@@ -22,18 +22,19 @@ function About() {
             as long as there is internet access.
           </li>
         </ul>
-      </div>
-      <div className="coding">
-        <h2> How is this application built? </h2>
-        <ul>
-          <li>Javascript with React Framework: using React hooks</li>
-          <li>
-            MYSQL database with relationship database table. One table with all
-            users including their registration information and user ID. Another
-            table for each users' saved drawings
-          </li>
-          <li>Node.Js with express Framework for backend. REST API.</li>
-        </ul>
+
+        <div className="coding">
+          <h2> How is this application built? </h2>
+          <ul>
+            <li>Javascript with React Framework: using React hooks</li>
+            <li>
+              MYSQL database with relationship database table. One table with
+              all users including their registration information and user ID.
+              Another table for each users' saved drawings
+            </li>
+            <li>Node.Js with express Framework for backend. REST API.</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

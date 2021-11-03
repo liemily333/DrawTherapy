@@ -63,18 +63,15 @@ code {
   font-family: "Permanent Marker", cursive;
 }
 
-.drawArea {
-  width: 1000px;
-  background: yellow;
-}
-
-.viewDrawings {
-  background-color: lightblue;
-}
-
 .Cell {
   width: 100px;
   height: 100px;
   border: 1px solid grey;
   align-items: center;
+}
+
+.mydrawings {
+  background-color: purple;
+  padding: 100px;
+  text-align: center;
 }

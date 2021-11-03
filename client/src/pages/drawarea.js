@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import CanvasDraw from "react-canvas-draw";
 import "./style.css";
 import Axios from "axios";
-import NavBar from "../componets/navBar";
+import Navbar from "../components/navBar";
 
 function DrawArea() {
   const [radius, setRadius] = useState(null);
@@ -17,11 +17,8 @@ function DrawArea() {
   };
 
   const viewDrawing = () => {
-    console.log("viewing drawing");
     const data = savecanvas.current.getSaveData();
     savedcanvas.current.loadSaveData(data);
-    console.log("savecanvas.current", savecanvas.current);
-    console.log("savecanvas current data", data);
   };
 
   useEffect(() => {
@@ -31,7 +28,6 @@ function DrawArea() {
       console.log(response);
     });
   }, [savedDrawing]);
-  console.log("saved drawings", savedDrawing);
 
   const clearCanvas = () => {
     savecanvas.current.clear();
@@ -50,9 +46,9 @@ function DrawArea() {
   }
 
   return (
-    <div className="draw">
-      <NavBar></NavBar>
-      <div className="drawArea">
+    <div>
+      <Navbar></Navbar>
+      <div className="draw">
         <h1> begin drawing!</h1>
         <CanvasDraw
           canvasWidth="1000px"
@@ -62,23 +58,26 @@ function DrawArea() {
           ref={savecanvas}
           hideGrid="true"
         />
-        <div class></div>
+
         <button onClick={changeRadius}>30</button>
         <button onClick={changeColor}>pink</button>
         <button onClick={clearCanvas}> clear canvas</button>
         <button onClick={saveDrawing}> save drawing</button>
         <button onClick={undoCanvas}>undo last move</button>
-      </div>
-      <div className="viewDrawing">
-        <CanvasDraw
-          canvasWidth="1000px"
-          brushRadius={radius}
-          brushColor={color}
-          getSaveData
-          ref={savedcanvas}
-          hideGrid="true"
-        />
-        <button onClick={viewDrawing}>view drawing</button>
+
+        <div className="viewDrawing">
+          <CanvasDraw
+            canvasWidth="1000px"
+            brushRadius={radius}
+            brushColor={color}
+            getSaveData
+            ref={savedcanvas}
+            hideGrid="true"
+            disabled
+            hideInterface
+          />
+          <button onClick={viewDrawing}>view drawing</button>
+        </div>
       </div>
     </div>
   );

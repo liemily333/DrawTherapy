@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import Canvas from "../componets/Canvas";
-
+import Canvas from "../components/Canvas/Canvas";
+import Navbar from "../components/navBar";
 function AllDrawings() {
   const [savedDrawing, setSavedDrawing] = useState([]);
 
@@ -13,15 +13,22 @@ function AllDrawings() {
   }, []);
 
   console.log("this is saved drawing", savedDrawing);
+
   return (
     <div>
-      {savedDrawing.map((data) => {
-        if (data.drawing === null) {
-          return null;
-        } else {
-          return <Canvas drawing={data.drawing} key={data.drawingID}></Canvas>;
-        }
-      })}
+      <Navbar></Navbar>
+      <div className="draw">
+        <h1 className="mydrawings">MY DRAWINGS: </h1>
+        {savedDrawing.map((data) => {
+          if (data.drawing === null) {
+            return null;
+          } else {
+            return (
+              <Canvas drawing={data.drawing} key={data.drawingID}></Canvas>
+            );
+          }
+        })}
+      </div>
     </div>
   );
 }
