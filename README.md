@@ -6,5 +6,5 @@ Key features: - User login and registration
 <br> - User can view all of their drawings
 <br>
 
-![screenshot draw area] (image1.png)
-![screenshot saved drawing] (image2.png)
+![screenshot draw area](image1.png)
+![screenshot saved drawing](image2.png)
